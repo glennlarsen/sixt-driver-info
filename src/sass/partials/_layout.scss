@@ -35,6 +35,10 @@ header {
 .logo {
   flex: 1;
 
+  span {
+    color: $color-dark;
+  }
+
   img {
     width: 130px;
   }

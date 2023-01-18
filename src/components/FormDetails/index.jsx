@@ -13,24 +13,24 @@ function FormDetails() {
   const onClickLiveForm = () => {
     if (formName === "flesland1") {
       navigate("/liveForm/flesland1");
-    }
-    if (formName === "flesland2") {
+    } else if (formName === "flesland2") {
       navigate("/liveForm/flesland2");
-    }
-    if (formName === "flesland3") {
+    } else if (formName === "flesland3") {
       navigate("/liveForm/flesland3");
+    } else if (!formName) {
+      navigate("/forms");
     }
   };
 
   const onClickAnswers = () => {
     if (formName === "flesland1") {
       navigate("/answers/flesland1");
-    }
-    if (formName === "flesland2") {
+    } else if (formName === "flesland2") {
       navigate("/answers/flesland2");
-    }
-    if (formName === "flesland3") {
+    } else if (formName === "flesland3") {
       navigate("/answers/flesland3");
+    } else if (!formName) {
+      navigate("/forms");
     }
   };
 

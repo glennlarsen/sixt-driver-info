@@ -1,5 +1,6 @@
-import React from "react";
-import { useParams } from "react-router-dom";
+import React, { useContext, useEffect } from "react";
+import { useParams, useNavigate } from "react-router-dom";
+import AuthContext from "utils/AuthContext";
 
 import Container from "components/Container";
 import Header from "components/Header";
@@ -9,6 +10,17 @@ import FormDetails from "components/FormDetails";
 
 function Form() {
   const { formName } = useParams();
+  const [auth] = useContext(AuthContext);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!auth) {
+      navigate("/");
+    }
+    if (!formName) {
+      navigate("/forms");
+    }
+  }, []);
 
   return (
     <Container>
