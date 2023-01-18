@@ -44,7 +44,7 @@ const CountryInput = ({ control, errors, defaultValue, onCountrySelect }) => {
           renderInput={(params) => (
             <FormTextField
               {...params}
-              label="You home country"
+              label="Your home country"
               variant="standard"
               error={Boolean(errors.country)}
               helperText={errors.country ? errors.country.message : ""}
