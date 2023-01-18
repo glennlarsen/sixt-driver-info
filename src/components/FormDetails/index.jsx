@@ -8,8 +8,6 @@ function FormDetails() {
   const navigate = useNavigate();
   const { formName } = useParams();
 
-  console.log(formName);
-
   const onClickLiveForm = () => {
     if (formName === "flesland1") {
       navigate("/liveForm/flesland1");

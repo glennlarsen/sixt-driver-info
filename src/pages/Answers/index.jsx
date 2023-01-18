@@ -32,9 +32,9 @@ function Answers() {
       />
       <Header title="Answers" flex={2} info={formName} />
       <Layout backPage={`form/${formName}`}>
-        {formName === "flesland1" && <AnswersForm />}
-        {formName === "flesland2" && <AnswersForm2 />}
-        {formName === "flesland3" && <AnswersForm3 />}
+        {formName === "sola1" && <AnswersForm />}
+        {formName === "sola2" && <AnswersForm2 />}
+        {formName === "sola3" && <AnswersForm3 />}
       </Layout>
     </Container>
   );

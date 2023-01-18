@@ -17,7 +17,7 @@ const Forms = () => {
       navigate("/");
     }
   }, []);
-
+  
   return (
     <Container>
       <Head
