@@ -16,7 +16,12 @@ function Layout({ children, showBackButton, backPage, showHowItWorks }) {
     setMenuState(false);
   };
 
+  const handleStateChange = (state) => {
+    setMenuState(state.isOpen);
+  };
+
   const logout = () => {
+    closeMenu();
     confirmAlert({
       title: "Logout",
       message: "Are you sure you want to logout?",
@@ -25,7 +30,6 @@ function Layout({ children, showBackButton, backPage, showHowItWorks }) {
           label: "Yes",
           onClick: () => {
             setAuth(null);
-            closeMenu();
             navigate("/");
           },
         },
@@ -44,7 +48,12 @@ function Layout({ children, showBackButton, backPage, showHowItWorks }) {
 
   return (
     <div className="main-layout">
-      <Menu width={310} right isOpen={menuState}>
+      <Menu
+        width={310}
+        right
+        isOpen={menuState}
+        onStateChange={handleStateChange}
+      >
         <h2>Menu</h2>
         <Tooltip title="Go back">
           <ArrowBackIcon

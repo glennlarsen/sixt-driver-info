@@ -1,13 +1,21 @@
+import { useContext } from "react";
 import FormTextField from "../FormTextField";
 import InputAdornment from "@mui/material/InputAdornment";
 import ErrorRoundedIcon from "@mui/icons-material/ErrorRounded";
+import { content } from "constants/DriverFormContent";
+import { LangContext } from "utils/LangContext";
 
-const PostalInput = ({ register, errors }) => {
+const PostalInput = ({ register, errors, onClick }) => {
+  const [lang] = useContext(LangContext);
+
   return (
     <FormTextField
       variant="standard"
-      label="Postal Code"
+      label={content[lang]["postal"]}
       type="text"
+      id="postal"
+      name="postal"
+      onClick={onClick}
       {...register("postal")}
       error={Boolean(errors.postal)}
       helperText={errors.postal ? errors.postal.message : ""}

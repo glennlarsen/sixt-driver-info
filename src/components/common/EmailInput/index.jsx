@@ -1,20 +1,28 @@
+import { useContext } from "react";
 import FormTextField from "../FormTextField";
 import InputAdornment from "@mui/material/InputAdornment";
 import ErrorRoundedIcon from "@mui/icons-material/ErrorRounded";
+import { content } from "constants/DriverFormContent";
+import { LangContext } from "utils/LangContext";
 
-const EmailInput = ({ register, errors }) => {
+const EmailInput = ({ register, errors, onClick }) => {
+  const [lang] = useContext(LangContext);
+
   return (
     <FormTextField
       variant="standard"
-      label="Email"
+      label={content[lang]["email"]}
       type="email"
+      id="email"
+      fullWidth
+      onClick={onClick}
       inputProps={{
         autoComplete: "chrome-off",
       }}
-      placeholder="Your@email.com"
+      placeholder={content[lang]["emailplaceholder"]}
       {...register("email")}
       error={Boolean(errors.email)}
-      helperText={errors.email ? errors.email.message : ""}
+      helperText={errors.email ? content[lang]["emailerror"] : ""}
       InputProps={
         errors.email
           ? {
