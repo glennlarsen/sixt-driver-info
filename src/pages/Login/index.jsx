@@ -3,9 +3,12 @@ import { useNavigate } from "react-router-dom";
 import AuthContext from "utils/AuthContext";
 
 import Container from "components/Container";
-import Header from "components/Header";
 import LoginForm from "components/forms/LoginForm";
 import Head from "components/Head";
+import Layout from "components/Layout";
+import Logo from "components/Logo";
+import { Mobile } from "components/common/ScreenViewSizes";
+import { DRIVER_INFO_FORMS } from "constants/staticInfo";
 
 function Login() {
   const [auth] = useContext(AuthContext);
@@ -16,15 +19,19 @@ function Login() {
       navigate("/forms");
     }
   }, []);
-  
+
   return (
     <Container>
       <Head
         page="Login"
         description="Login to start using Sixt Driver info Forms"
       />
-      <Header title="Login" info="Driver Info Forms" />
-      <LoginForm />
+      <Layout info="Driver Info Forms" showSideBar="none">
+        <Mobile>
+          <Logo info="Driver Info Forms" />
+        </Mobile>
+        <LoginForm title="Login" info={DRIVER_INFO_FORMS} />
+      </Layout>
     </Container>
   );
 }

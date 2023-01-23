@@ -18,8 +18,9 @@ import EmailInput from "components/common/EmailInput";
 import { content } from "constants/DriverFormContent";
 import { LangContext } from "utils/LangContext";
 import ScrollTo from "components/common/ScrollTo";
+import Header from "components/Header";
 
-function DriverInformation2() {
+function DriverInformation2({ title, confirmation }) {
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
@@ -44,8 +45,8 @@ function DriverInformation2() {
   // Function that will run when form is submitted
   async function onSubmit(data) {
     setLoading(true);
-    const message = await SendDriverInfo2(data);
-    if (message.success) {
+    const send = await SendDriverInfo2(data);
+    if (send.success) {
       setTimeout(() => {
         setLoading(false);
       }, 5000);
@@ -72,6 +73,23 @@ function DriverInformation2() {
     config: { duration: 900 },
   });
 
+  //Fixes scroll behaviour for android chrome in the driver forms//
+  if (/Android/.test(navigator.appVersion)) {
+    window.addEventListener("resize", function () {
+      if (
+        document.activeElement.tagName == "INPUT" ||
+        document.activeElement.tagName == "TEXTAREA"
+      ) {
+        window.setTimeout(function () {
+          document.activeElement.scrollIntoView({
+            behavior: "auto",
+            block: "center",
+          });
+        }, 0);
+      }
+    });
+  }
+
   if (loading && submitted) {
     return (
       <animated.div style={slide}>
@@ -79,7 +97,7 @@ function DriverInformation2() {
           <animated.div style={opacity}>
             <DoneIcon sx={{ fontSize: 100, color: "#FF5F00" }} />
           </animated.div>
-          {content[lang]["confirmation"]}
+          {confirmation}
         </div>
       </animated.div>
     );
@@ -102,6 +120,7 @@ function DriverInformation2() {
       autoComplete="off"
       onSubmit={handleSubmit(onSubmit)}
     >
+      <Header title={title} />
       <CountryInput
         control={control}
         errors={errors}

@@ -3,12 +3,12 @@ import { useParams, useNavigate } from "react-router-dom";
 import AuthContext from "utils/AuthContext";
 
 import Container from "components/Container";
-import Header from "components/Header";
 import Head from "components/Head";
 import Layout from "components/Layout";
 import AnswersForm from "components/forms/AnswersForm";
 import AnswersForm2 from "components/forms/AnswersForm2";
 import AnswersForm3 from "components/forms/AnswersForm3";
+import { ANSWERS } from "constants/staticInfo";
 
 function Answers() {
   const { formName } = useParams();
@@ -30,11 +30,10 @@ function Answers() {
         page="Answers"
         description="Showing answers that the client provides to the form"
       />
-      <Header title="Answers" flex={2} info={formName} />
-      <Layout backPage={`form/${formName}`}>
-        {formName === "flesland1" && <AnswersForm />}
-        {formName === "flesland2" && <AnswersForm2 />}
-        {formName === "flesland3" && <AnswersForm3 />}
+      <Layout backPage={`form/${formName}`} info={formName}>
+        {formName === "flesland1" && <AnswersForm title={ANSWERS} />}
+        {formName === "flesland2" && <AnswersForm2 title={ANSWERS} />}
+        {formName === "flesland3" && <AnswersForm3 title={ANSWERS} />}
       </Layout>
     </Container>
   );

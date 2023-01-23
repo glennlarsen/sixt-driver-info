@@ -20,6 +20,8 @@ import Alert from "@mui/material/Alert";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import CloseIcon from "@mui/icons-material/Close";
 import Collapse from "@mui/material/Collapse";
+import Header from "components/Header";
+import { NO_ANSWERS } from "constants/staticInfo";
 
 const theme = createTheme({
   status: {
@@ -46,7 +48,7 @@ const FormTextField = styled(TextField)({
   },
 });
 
-function AnswersForm() {
+function AnswersForm({ title }) {
   const navigate = useNavigate();
   const [copySuccess, setCopySuccess] = useState("");
   const [deleted, setDeleted] = useState(false);
@@ -167,17 +169,17 @@ function AnswersForm() {
 
   if (answers.length < 1) {
     return (
-      <ThemeProvider theme={theme}>
-        <Box className="answers-form">
-          <div className="no-answers">
-            No Answers Yet. Find a customer that can fill your Live Form! Click
-            Refresh if the result don't show automatically.
-          </div>
-          <button onClick={refreshPage} type="submit">
-            Refresh
-          </button>
-        </Box>
-      </ThemeProvider>
+      <>
+        <ThemeProvider theme={theme}>
+          <Box className="answers-form">
+            <Header title={title} />
+            <div className="no-answers">{NO_ANSWERS}</div>
+            <button onClick={refreshPage} type="submit">
+              Refresh
+            </button>
+          </Box>
+        </ThemeProvider>
+      </>
     );
   }
 
@@ -210,6 +212,7 @@ function AnswersForm() {
                 autoComplete="off"
                 className="answers-form"
               >
+                <Header title={title} />
                 <span className="last-received">
                   <strong>Last Answer: </strong>
                   {answers ? (
