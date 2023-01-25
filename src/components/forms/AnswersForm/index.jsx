@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { confirmAlert } from "react-confirm-alert";
 import "react-confirm-alert/src/react-confirm-alert.css";
@@ -168,6 +168,8 @@ function AnswersForm({ title }) {
   }
 
   if (answers.length < 1) {
+    //Refresh page every 10 seconds to get new form data if no answers are received//
+    setTimeout(() => refreshPage(), 10000);
     return (
       <>
         <ThemeProvider theme={theme}>
