@@ -144,8 +144,8 @@ function AnswersForm2({ title }) {
     });
   };
 
-  async function handleDelete(id) {
-    const deleteDriv = await DeleteDriver2(id);
+  async function handleDelete(item) {
+    const deleteDriv = await DeleteDriver2(item);
     if (deleteDriv.success) {
       setDeleted(true);
       window.location.reload(true);
@@ -204,6 +204,8 @@ function AnswersForm2({ title }) {
             return new Date(value).toLocaleDateString(locale, options);
           };
 
+          console.log(answers);
+
           return (
             <ThemeProvider theme={theme} key={item.id}>
               <Box
@@ -232,10 +234,10 @@ function AnswersForm2({ title }) {
                             edge="end"
                             color="primary"
                             sx={{ boxShadow: "none" }}
+                            onClick={copyCountry}
                           >
                             <ContentCopyIcon
                               sx={{ height: ".8em", width: ".8em" }}
-                              onClick={copyCountry}
                             />
                           </IconButton>
                         </InputAdornment>
@@ -259,10 +261,10 @@ function AnswersForm2({ title }) {
                             edge="end"
                             color="primary"
                             sx={{ boxShadow: "none" }}
+                            onClick={copyStreet}
                           >
                             <ContentCopyIcon
                               sx={{ height: ".8em", width: ".8em" }}
-                              onClick={copyStreet}
                             />
                           </IconButton>
                         </InputAdornment>
@@ -287,10 +289,10 @@ function AnswersForm2({ title }) {
                               edge="end"
                               color="primary"
                               sx={{ boxShadow: "none" }}
+                              onClick={copyPostal}
                             >
                               <ContentCopyIcon
                                 sx={{ height: ".8em", width: ".8em" }}
-                                onClick={copyPostal}
                               />
                             </IconButton>
                           </InputAdornment>
@@ -314,10 +316,10 @@ function AnswersForm2({ title }) {
                               edge="end"
                               color="primary"
                               sx={{ boxShadow: "none" }}
+                              onClick={copyCity}
                             >
                               <ContentCopyIcon
                                 sx={{ height: ".8em", width: ".8em" }}
-                                onClick={copyCity}
                               />
                             </IconButton>
                           </InputAdornment>
@@ -343,10 +345,10 @@ function AnswersForm2({ title }) {
                             edge="end"
                             color="primary"
                             sx={{ boxShadow: "none" }}
+                            onClick={copyPhone}
                           >
                             <ContentCopyIcon
                               sx={{ height: ".8em", width: ".8em" }}
-                              onClick={copyPhone}
                             />
                           </IconButton>
                         </InputAdornment>
@@ -370,10 +372,10 @@ function AnswersForm2({ title }) {
                             edge="end"
                             color="primary"
                             sx={{ boxShadow: "none" }}
+                            onClick={copyEmail}
                           >
                             <ContentCopyIcon
                               sx={{ height: ".8em", width: ".8em" }}
-                              onClick={copyEmail}
                             />
                           </IconButton>
                         </InputAdornment>

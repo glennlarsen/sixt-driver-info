@@ -232,10 +232,10 @@ function AnswersForm3({ title }) {
                             edge="end"
                             color="primary"
                             sx={{ boxShadow: "none" }}
+                            onClick={copyCountry}
                           >
                             <ContentCopyIcon
                               sx={{ height: ".8em", width: ".8em" }}
-                              onClick={copyCountry}
                             />
                           </IconButton>
                         </InputAdornment>
@@ -259,10 +259,10 @@ function AnswersForm3({ title }) {
                             edge="end"
                             color="primary"
                             sx={{ boxShadow: "none" }}
+                            onClick={copyStreet}
                           >
                             <ContentCopyIcon
                               sx={{ height: ".8em", width: ".8em" }}
-                              onClick={copyStreet}
                             />
                           </IconButton>
                         </InputAdornment>
@@ -287,10 +287,10 @@ function AnswersForm3({ title }) {
                               edge="end"
                               color="primary"
                               sx={{ boxShadow: "none" }}
+                              onClick={copyPostal}
                             >
                               <ContentCopyIcon
                                 sx={{ height: ".8em", width: ".8em" }}
-                                onClick={copyPostal}
                               />
                             </IconButton>
                           </InputAdornment>
@@ -314,10 +314,10 @@ function AnswersForm3({ title }) {
                               edge="end"
                               color="primary"
                               sx={{ boxShadow: "none" }}
+                              onClick={copyCity}
                             >
                               <ContentCopyIcon
                                 sx={{ height: ".8em", width: ".8em" }}
-                                onClick={copyCity}
                               />
                             </IconButton>
                           </InputAdornment>
@@ -343,10 +343,10 @@ function AnswersForm3({ title }) {
                             edge="end"
                             color="primary"
                             sx={{ boxShadow: "none" }}
+                            onClick={copyPhone}
                           >
                             <ContentCopyIcon
                               sx={{ height: ".8em", width: ".8em" }}
-                              onClick={copyPhone}
                             />
                           </IconButton>
                         </InputAdornment>
@@ -370,10 +370,10 @@ function AnswersForm3({ title }) {
                             edge="end"
                             color="primary"
                             sx={{ boxShadow: "none" }}
+                            onClick={copyEmail}
                           >
                             <ContentCopyIcon
                               sx={{ height: ".8em", width: ".8em" }}
-                              onClick={copyEmail}
                             />
                           </IconButton>
                         </InputAdornment>
