@@ -28,7 +28,7 @@ const DriverInformation = ({ title, confirmation }) => {
   const [error, setError] = useState(false);
   const [defaultCallingCode, setDefaultCallingCode] = useState("NO");
   const [lang, setLang] = useContext(LangContext);
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
   const openModal = () => setOpen(true);
   const closeModal = () => setOpen(false);
   const [settings, setSettings] = useState({

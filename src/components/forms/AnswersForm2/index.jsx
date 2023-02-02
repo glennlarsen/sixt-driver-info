@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { confirmAlert } from "react-confirm-alert";
 import "react-confirm-alert/src/react-confirm-alert.css";
@@ -22,6 +22,8 @@ import CloseIcon from "@mui/icons-material/Close";
 import Collapse from "@mui/material/Collapse";
 import Header from "components/Header";
 import { NO_ANSWERS } from "constants/staticInfo";
+import SettingsButton from "components/common/SettingsButton";
+import AnswersSettingsModal from "components/common/AnswersSettingsModal";
 
 const theme = createTheme({
   status: {
@@ -59,6 +61,10 @@ function AnswersForm2({ title }) {
   const phoneRef = useRef(null);
   const emailRef = useRef(null);
   const [show, setShow] = useState(true);
+  const [settings, setSettings] = useState(true);
+  const [open, setOpen] = useState(false);
+  const openModal = () => setOpen(true);
+  const closeModal = () => setOpen(false);
 
   const refreshPage = () => {
     navigate(0);
@@ -144,6 +150,10 @@ function AnswersForm2({ title }) {
     });
   };
 
+  const handleSettings = () => {
+    openModal();
+  };
+
   async function handleDelete(item) {
     const deleteDriv = await DeleteDriver2(item);
     if (deleteDriv.success) {
@@ -192,7 +202,7 @@ function AnswersForm2({ title }) {
           const { country, street, postal, city, phone, email, publishedAt } =
             item.attributes;
           const phoneFormated = phone ? phone.replace(/\s+/g, "") : "";
-          var options = {
+          const options = {
             weekday: "long",
             year: "numeric",
             month: "long",
@@ -203,9 +213,7 @@ function AnswersForm2({ title }) {
           const formatDate = (value, locale = "nb-NO") => {
             return new Date(value).toLocaleDateString(locale, options);
           };
-
-          console.log(answers);
-
+          
           return (
             <ThemeProvider theme={theme} key={item.id}>
               <Box
@@ -214,6 +222,13 @@ function AnswersForm2({ title }) {
                 autoComplete="off"
                 className="answers-form"
               >
+                <SettingsButton handleSettings={handleSettings} />
+                <AnswersSettingsModal
+                  open={open}
+                  handleClose={closeModal}
+                  settings={settings}
+                  setSettings={setSettings}
+                />
                 <Header title={title} />
                 <span className="last-received">
                   <strong>Last Answer: </strong>
