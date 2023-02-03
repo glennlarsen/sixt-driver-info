@@ -1,16 +1,20 @@
+import React, { useContext } from "react";
 import Typography from "@mui/material/Typography";
 import FormGroup from "@mui/material/FormGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Switch from "@mui/material/Switch";
 import Stack from "@mui/material/Stack";
 import ModalLayout from "../ModalLayout";
+import { SettingsContext } from "utils/SettingsContext";
 
-function AnswersSettingsModal({ open, handleClose, settings, setSettings }) {
+function AnswersSettingsModal({ open, handleClose }) {
+  const [upperCase, setUpperCase] = useContext(SettingsContext);
+
   const handleChange = (event) => {
-   setSettings(event.target.checked);
-  }
-
-  console.log(settings);
+    setUpperCase(event.target.checked);
+    localStorage.setItem("upperCase", event.target.checked);
+    document.documentElement.setAttribute("upperCase", event.target.checked);
+  };
 
   return (
     <ModalLayout open={open} handleClose={handleClose}>
@@ -18,22 +22,22 @@ function AnswersSettingsModal({ open, handleClose, settings, setSettings }) {
         Show big or small letters
       </Typography>
       <FormGroup>
-      <Stack direction="row" spacing={1} alignItems="center">
+        <Stack direction="row" spacing={1} alignItems="center">
           <FormControlLabel
             sx={{ marginLeft: "0" }}
             control={
               <>
-              <Typography>Big letters</Typography>
+                <Typography>Small letters</Typography>
                 <Switch
-                  checked={settings}
+                  checked={upperCase}
                   onChange={handleChange}
                   name="upperCase"
                 />
-                <Typography>Small letters</Typography>
-                </>
+                <Typography>Big letters</Typography>
+              </>
             }
           />
-           </Stack>
+        </Stack>
       </FormGroup>
       <button className="btn-close" onClick={handleClose}>
         Close
