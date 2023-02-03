@@ -182,17 +182,15 @@ function AnswersForm({ title }) {
     //Refresh page every 10 seconds to get new form data if no answers are received//
     setTimeout(() => refreshPage(), 10000);
     return (
-      <>
-        <ThemeProvider theme={theme}>
-          <Box className="answers-form">
-            <Header title={title} />
-            <div className="no-answers">{NO_ANSWERS}</div>
-            <button onClick={refreshPage} type="submit">
-              Refresh
-            </button>
-          </Box>
-        </ThemeProvider>
-      </>
+      <ThemeProvider theme={theme}>
+        <Box className="answers-form">
+          <Header title={title} />
+          <div className="no-answers">{NO_ANSWERS}</div>
+          <button onClick={refreshPage} type="submit">
+            Refresh
+          </button>
+        </Box>
+      </ThemeProvider>
     );
   }
 

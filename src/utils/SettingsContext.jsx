@@ -1,9 +1,10 @@
-import React, { useState, createContext } from "react";
+import React, { createContext } from "react";
+import useLocalStorage from "./UseLocalStorage";
 
 export const SettingsContext = createContext();
 
 export const SettingsProvider = props => {
-  const [upperCase, setUpperCase] = useState(localStorage.getItem("upperCase") || true);
+  const [upperCase, setUpperCase] = useLocalStorage("upperCase", true);
   document.documentElement.setAttribute("upperCase", upperCase);
 
   return (
