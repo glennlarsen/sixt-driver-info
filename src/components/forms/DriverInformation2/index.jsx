@@ -34,14 +34,16 @@ function DriverInformation2({ title, confirmation }) {
   const closeModal = () => setOpen(false);
   const [settings, setSettings] = useState({
     address: true,
-    phone: true,
+    tel: true,
     email: true,
   });
   const onlineStatus = useOnlineStatus();
 
   const {
     register,
+    unregister,
     handleSubmit,
+    trigger,
     reset,
     control,
     formState: { errors },
@@ -51,6 +53,7 @@ function DriverInformation2({ title, confirmation }) {
 
   const onReset = () => {
     reset();
+    unregister();
     setDefaultCallingCode("NO");
   };
 
@@ -68,7 +71,7 @@ function DriverInformation2({ title, confirmation }) {
       setSubmitted(true);
       reset();
       setDefaultCallingCode("NO");
-      setSettings({ address: true, phone: true, email: true });
+      setSettings({ address: true, tel: true, email: true });
     } else {
       setLoading(false);
       setSubmitted(false);
@@ -92,6 +95,7 @@ function DriverInformation2({ title, confirmation }) {
   });
 
   const handleSettings = () => {
+    trigger();
     openModal();
   };
 
@@ -158,10 +162,12 @@ function DriverInformation2({ title, confirmation }) {
         handleClose={closeModal}
         settings={settings}
         setSettings={setSettings}
+        unregister={unregister}
+        errors={errors}
       />
       <Header title={title} margin={0} />
       <span style={{ textAlign: "center" }}>
-        {!settings.address && !settings.phone && !settings.email
+        {!settings.address && !settings.tel && !settings.email
           ? "Please select at least one field to show in the settings menu"
           : null}
       </span>
@@ -197,7 +203,7 @@ function DriverInformation2({ title, confirmation }) {
         errors={errors}
         defaultValue={defaultCallingCode}
         onClick={() => ScrollTo("tel")}
-        show={settings.phone}
+        show={settings.tel}
       />
       <EmailInput
         register={register}
