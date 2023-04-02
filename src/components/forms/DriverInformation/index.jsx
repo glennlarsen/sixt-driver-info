@@ -43,6 +43,7 @@ const DriverInformation = ({ title, confirmation }) => {
     register,
     unregister,
     handleSubmit,
+    trigger,
     reset,
     control,
     formState: { errors },
@@ -93,6 +94,7 @@ const DriverInformation = ({ title, confirmation }) => {
   });
 
   const handleSettings = () => {
+    trigger();
     openModal();
   };
 
