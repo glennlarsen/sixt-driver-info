@@ -4,6 +4,8 @@ import { stack as Menu } from "react-burger-menu";
 import { confirmAlert } from "react-confirm-alert";
 import AuthContext from "utils/AuthContext";
 import burgerIcon from "images/burger-icon.png";
+import { HiOutlineMenuAlt1 } from "react-icons/hi";
+import { IconContext } from "react-icons";
 
 import Header from "components/Header";
 import SideBarMenu from "components/common/SideBarMenu";
@@ -59,7 +61,11 @@ function Layout({
     <div className="main-layout">
       {showSideBar === "none" ? null : (
         <Menu
-          customBurgerIcon={<img src={burgerIcon} />}
+          customBurgerIcon={
+            <IconContext.Provider value={{ color: "#191919", size: "3em" }}>
+              <HiOutlineMenuAlt1 />
+            </IconContext.Provider>
+          }
           width={310}
           left
           isOpen={menuState}
