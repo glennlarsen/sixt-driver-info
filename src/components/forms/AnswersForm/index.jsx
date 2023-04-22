@@ -137,7 +137,7 @@ function AnswersForm({ title }) {
   useEffect(() => {
     //Refresh page every 10 seconds to get new form data if no answers are received//
     if (answers.length > 0) return;
-    const timer = setTimeout(() => refreshPage(), 10000);
+    const timer = setTimeout(() => refreshPage(), 100000);
     return () => clearTimeout(timer);
   }, [answers]);
 
@@ -225,13 +225,12 @@ function AnswersForm({ title }) {
             return new Date(value).toLocaleDateString(locale, options);
           };
 
-             //Delete all answers if last answer is more than 15 minutes old
+          //Delete all answers if last answer is more than 15 minutes old
           const nowDate = new Date();
           const publishTime = new Date(publishedAt);
-          const diffMilli = Math.abs(publishTime - nowDate);
-          const diffTime = Math.ceil(diffMilli / (1000 * 60));
 
-          if (answers && diffTime > 15) {
+          if (answers && nowDate - publishTime > 15 * 60 * 1000) {
+            // Content is more than 15 minutes old, delete it
             handleDelete(item.id);
           }
 
