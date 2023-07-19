@@ -6,13 +6,19 @@ import Head from "components/Head";
 import DriverInformation from "components/forms/DriverInformation";
 import DriverInformation2 from "components/forms/DriverInformation2";
 import DriverInformation3 from "components/forms/DriverInformation3";
+import DriverInformation4 from "components/forms/DriverInformation4";
 import { content } from "constants/DriverFormContent";
 import { LangContext } from "utils/LangContext";
 import LanguageSelector from "components/common/LanguageSelector";
 import Layout from "components/Layout";
 import Logo from "components/Logo";
 import { Mobile } from "components/common/ScreenViewSizes";
-import { FLESLAND_1, FLESLAND_2, FLESLAND_3 } from "constants/staticInfo";
+import {
+  FLESLAND_1,
+  FLESLAND_2,
+  FLESLAND_3,
+  FLESLAND_4,
+} from "constants/staticInfo";
 import FormTitle from "components/FormTitle";
 
 function LiveForm() {
@@ -51,6 +57,12 @@ function LiveForm() {
         )}
         {formName === FLESLAND_3 && (
           <DriverInformation3
+            title={content[lang]["heading"]}
+            confirmation={content[lang]["confirmation"]}
+          />
+        )}
+        {formName === FLESLAND_4 && (
+          <DriverInformation4
             title={content[lang]["heading"]}
             confirmation={content[lang]["confirmation"]}
           />

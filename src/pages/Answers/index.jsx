@@ -8,12 +8,14 @@ import Layout from "components/Layout";
 import AnswersForm from "components/forms/AnswersForm";
 import AnswersForm2 from "components/forms/AnswersForm2";
 import AnswersForm3 from "components/forms/AnswersForm3";
+import AnswersForm4 from "components/forms/AnswersForm4";
 import { ANSWERS } from "constants/staticInfo";
 import FormTitle from "components/FormTitle";
 import {
   FLESLAND_1,
   FLESLAND_2,
   FLESLAND_3,
+  FLESLAND_4,
 } from "constants/staticInfo";
 
 function Answers() {
@@ -40,6 +42,7 @@ function Answers() {
         {formName === FLESLAND_1 && <AnswersForm title={ANSWERS} />}
         {formName === FLESLAND_2 && <AnswersForm2 title={ANSWERS} />}
         {formName === FLESLAND_3 && <AnswersForm3 title={ANSWERS} />}
+        {formName === FLESLAND_4 && <AnswersForm4 title={ANSWERS} />}
       </Layout>
     </Container>
   );

@@ -6,6 +6,7 @@ import {
   FLESLAND_1,
   FLESLAND_2,
   FLESLAND_3,
+  FLESLAND_4,
 } from "constants/staticInfo";
 
 import { useNavigate, useParams } from "react-router-dom";
@@ -21,6 +22,8 @@ function FormDetails({ title }) {
       navigate(`/liveForm/${FLESLAND_2}`);
     } else if (formName === FLESLAND_3) {
       navigate(`/liveForm/${FLESLAND_3}`);
+    } else if (formName === FLESLAND_4) {
+      navigate(`/liveForm/${FLESLAND_4}`);
     } else if (!formName) {
       navigate("/forms");
     }
@@ -33,6 +36,8 @@ function FormDetails({ title }) {
       navigate(`/answers/${FLESLAND_2}`);
     } else if (formName === FLESLAND_3) {
       navigate(`/answers/${FLESLAND_3}`);
+    } else if (formName === FLESLAND_4) {
+      navigate(`/answers/${FLESLAND_4}`);
     } else if (!formName) {
       navigate("/forms");
     }

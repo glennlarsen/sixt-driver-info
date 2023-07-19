@@ -8,9 +8,11 @@ import {
   FLESLAND_1,
   FLESLAND_2,
   FLESLAND_3,
+  FLESLAND_4,
   FLESLAND_1_TITLE,
   FLESLAND_2_TITLE,
   FLESLAND_3_TITLE,
+  FLESLAND_4_TITLE,
 } from "constants/staticInfo";
 
 const FormsForm = ({ title }) => {
@@ -26,6 +28,10 @@ const FormsForm = ({ title }) => {
 
   const clickForm3 = () => {
     navigate(`/form/${FLESLAND_3}`);
+  };
+
+  const clickForm4 = () => {
+    navigate(`/form/${FLESLAND_4}`);
   };
 
   return (
@@ -48,7 +54,9 @@ const FormsForm = ({ title }) => {
           </Paper>
         </Grid>
         <Grid xs={6}>
-          <Paper className="box box-inactive">My Form 4</Paper>
+          <Paper onClick={clickForm4} className="box">
+            {FLESLAND_4_TITLE}
+          </Paper>
         </Grid>
         <Grid xs={6}>
           <Paper className="box-new box-inactive">New form</Paper>
